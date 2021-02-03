@@ -1,0 +1,139 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 listens">
+            <div class="row">
+                <div class="col-2 pr-0 border">
+                    <select class=" form-select" id="sort">
+                        <option value="Жидкость">Жидкости</option>
+                        <option value="Девайс">поды</option>
+                        <option value="Расходник">Расходник</option>
+                        <option value="Одноразка">Одноразка</option>
+                        <option value="Разное">Разное</option>
+                    </select>
+                </div>
+                <div class="col-2 p-0 border">
+                    {{#if isAdmin}}
+                    <select name="" id="" class="form-select">
+                        <option value="1">Cула</option>
+                        <option value="1">Клим</option>
+                        <option value="1">Олег</option>
+                        <option value="1">Муха</option>
+                    </select>
+                    {{else}}
+                    <input type="text" class="form-control" id="worker" disabled value={{worker}}>
+                    {{/if}}
+
+                </div>
+                <div class="col pl-0 border">
+                    <input type="text" class="form-control" placeholder="Пойск" id="search">
+                </div>
+            </div>
+
+            <div class="list">
+                {{#each product}}
+                <div class="card" data-id={{_id}} data-type={{type}}>
+                    <p class="names">{{name}}</p>
+                    <p>{{lastPrise}}</p>
+                    <p>{{que}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-md-4  p-0 " id="checks">
+            <button class="btn btn-dark w-100 closeCheck mb-3">Закрыть эту ебаную хуйню</button>
+
+
+            <div class="container-fluid check">
+                <div class="row">
+                    <select name="" id="" class="form-select col">
+                        <option value="other">Розничный покупатель</option>
+                        {{#each client}}
+                        <option value={{_id}}> {{name}} </option>
+                        {{/each}}
+                    </select>
+                    <button class="btn btn-dark col-1 mr-4" data-toggle="modal" data-target="#newClient">+</button>
+                </div>
+                <div id="check">
+                    <div class="row">
+                        <div class="col-5 border">
+                            Название
+                        </div>
+                        <div class="col-2 border text-center">
+                            Цена
+                        </div>
+                        <div class="col-1 border text-center">
+                            Кол
+                        </div>
+                        <div class="col-1 border text-center">
+                            %
+                        </div>
+                        <div class="col-2 border text-center">
+                            Итог
+                        </div>
+                        <div class="col-1 border text-center">
+                            <button class="btn btn-dark"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="itog mr-5 ml-5 d-flex justify-content-between">
+                <p>Итог</p>
+                <strong id="itog">0</strong>
+            </div>
+
+            <div class="container-fluid">
+                <textarea id="comment" class="form-control m-0 p-0 col-12" rows="6"></textarea>
+                <div class="listenMoney row ">
+                    <div class="item col-6 p-2">
+                        <div class="input-group">
+                            <span class="input-group-text" id="inputGroupPrepend">Каспи</span>
+                            <input type="number" class="form-control" id="validationCustomUsername"
+                                aria-describedby="inputGroupPrepend" value="0" required>
+
+                        </div>
+                    </div>
+                    <div class="col-6 p-2">
+
+                        <div class="input-group">
+                            <span class="input-group-text" id="inputGroupPrepend">Наличка</span>
+                            <input type="number" class="form-control" id="validationCustomUsername"
+                                aria-describedby="inputGroupPrepend" value="0" required>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-danger col-3">Удалить</button>
+                    <button class="btn btn-dark col" id="fetch">Проданно</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="newClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-group">
+                    <strong>Имя покупателя*</strong>
+                    <input type="text">
+                    <strong>Телефон</strong>
+                    <input type="text" value="+7">
+                    <strong Скидка></strong>
+                    <div class="list">
+                        <div class="item">
+                            <button>5</button>
+                        </div>
+                        <div class="item">
+                            <button>10</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/cashier.js"></script>

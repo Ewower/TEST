@@ -1,0 +1,405 @@
+da{{#if main}}
+<div class="container-fluid mt-3" style="height:  100vh;">
+    <div class="row">
+        <div class="col-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true">Склад</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false">Поступление</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                    aria-controls="v-pills-messages" aria-selected="false">История продаж</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                    aria-controls="v-pills-settings" aria-selected="false">Движение денег</a>
+                <a class="nav-link" id="v-pills-registr" data-toggle="pill" href="#v-registr" role="tab"
+                    aria-controls="v-pills-settings" aria-selected="false">Создание юзеров</a>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="tab-content" style="height: 100%;" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <div class="container-fluid ">
+                        <div class="row ">
+                            <div class="col-2">
+                                <button class="btn btn-primary w-100" data-toggle="modal"
+                                    data-target="#exampleModal">Создать товар</button>
+                            </div>
+                            <div class="col-2">
+                                <button class="btn btn-warning w-100" id="fixedTrue">Редактирование товара</button>
+                            </div>
+                            <div class="col-2">
+                                <select id="sortingWarehouse" class="form-select">
+                                    {{#each types}}
+                                    <option value={{this}}>{{this}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" placeholder="Пойск">
+                            </div>
+                        </div>
+                        <div id="purchase">
+                            <div class="row" data-id={{_id}}>
+                                <div class="col-md-5 border  text-midle">
+                                    <span> Название
+                                        товара</span>
+                                </div>
+                                <div class="col-1 text-center  border    text-midle">
+                                    <span class="m-auto">Количество</span>
+                                </div>
+                                <div class="col-1 border text-center   text-midle">
+                                    Цена продажи
+                                </div>
+                                <div class="col-1 border text-center  text-midle">
+                                    <span class="m-auto">Цена закупки</span>
+                                </div>
+                                <div class="col-1 border text-center  text-midle">
+                                    в теорий
+                                </div>
+                                <div class="col-1 border text-center  text-midle">
+                                    Надо отбить
+                                </div>
+                                <div class="col-1 p-0 border">
+                                    <select class="form-select">
+                                        <option value="1">хуй</option>
+                                    </select>
+                                </div>
+                                <div class="col-1 border p-0  text-center  text-midle">
+                                    <p class="m-0">Изменить</p>
+                                </div>
+                            </div>
+                            {{#each product}}
+                            <div class="row skladSSS" data-id={{_id}}>
+                                <div class="col-md-5 border purchaseName" style="padding:  .375rem .75rem;">{{name}}
+                                </div>
+                                <div class="col-1 p-0  border   "> <input type="text"
+                                        class="form-control text-center purchaseQue inputFix" value={{que}}>
+                                </div>
+                                <div class="col-1 p-0 border ">
+                                    <input type="text " class="text-center purchaseLastPrise  form-control inputFix"
+                                        value={{lastPrise}}>
+                                </div>
+                                <div class="col-1 p-0 border text-center purchaseLast">
+                                    <input type="text" class="form-control text-center inputFix" value={{firstPrise}}>
+                                </div>
+                                <div class="col-1 border text-center" style="padding:  .375rem .75rem;">
+                                    {{possibleIncome}}
+
+                                </div>
+
+                                <div class="col-1 border text-center text-midle">
+                                    {{xyz}}
+                                </div>
+                                <div class="col-1 border p-0">
+                                    <select class="purchaseType form-select">
+                                        <option value={{type}}>{{type}}</option>
+                                        <option value="Жидкость">Жидкость</option>
+                                        <option value="Расходник">Расходник</option>
+                                        <option value="Девайс">Под/Мод/Мех</option>
+                                        <option value="Одноразка">Одноразка</option>
+                                        <option value="Кальянные табаки">Кальянные табаки</option>
+                                    </select>
+                                </div>
+                                <div class="col-1 border p-0">
+                                    <button class="btn btn-warning w-100 btnFix" style="height: 100%;"><i
+                                            class="fas fa-tools"></i></button>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="container-fluid zavoz">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text bg-white" id="basic-addon1"><i
+                                            class="fas fa-search"></i></span>
+                                    <input type="text" class="form-control" id="searchPurchase">
+                                </div>
+                                {{#each product}}
+                                <p class="border p-3 m-0 justify-content-beetwen createLi" data-id={{_id}}
+                                    data-lastPrise={{lastPrise}} data-firstPrise={{firstPrise}}><span
+                                        class="liName">{{name}}</span>
+                                    <span><i class="far fa-plus-square"></i></span>
+                                </p>
+                                {{/each}}
+                            </div>
+                            <div class="col-9">
+
+                                <div class="container-fluid listen"></div>
+                                <div class="fetchNode border p-2 w-100">
+                                    <button class="btn btn-dark" id="fetch">Я хз что тут написать</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div class="container-fluid history">
+                        <div class="row bg-light border-bottom">
+                            <div class="col-1 p-0 m-0 border text-center ">
+                                <p class="m-0  ">№</p>
+                            </div>
+                            <div class="col-5 p-0 m-0">
+
+                                <p class="m-0  listens">
+                                    <span class="border col text-start">Товар</span>
+                                    <span class="border col-1 text-center">Кол</span>
+                                    <span class="border col-1 text-center">Цена</span>
+                                    <span class="border col-2 text-center">итог</span>
+                                </p>
+
+                            </div>
+
+                            <div class="col-1 border">
+                                Оплата
+                            </div>
+                            <div class="col-1 border">
+                                Продавец
+                            </div>
+                            <div class="col-1 border">
+                                Дата
+                            </div>
+                            <div class="col border">
+                                Коментарий
+                            </div>
+                        </div>
+                        {{#each check}}
+                        <div class="row border-bottom border-primary">
+                            <div class="col-1 p-0 m-0 border text-center ">
+                                <p class="m-0  ">{{@index}}</p>
+                            </div>
+                            <div class="col-5 p-0 m-0">
+                                {{#each product}}
+                                <p class="m-0  listens">
+                                    <span class="border col text-start">{{this.name}}</span>
+                                    <span class="border col-1 text-center">{{this.que}}</span>
+                                    <span class="border col-1 text-center">{{this.fistPrise}}</span>
+                                    <span class="border col-2 text-center">{{this.lastPrise}}</span>
+                                </p>
+                                {{/each}}
+                            </div>
+
+                            <div class="col-1 border">
+                                {{type}}
+                            </div>
+                            <div class="col-1 border">
+                                <p class="m-0 align-self-center">{{seller}}</p>
+                            </div>
+                            <div class="col-1 pr-0 pl-0 border text-center">
+                                {{date}}
+                            </div>
+                            <div class="col border">
+                                {{comment}}
+                            </div>
+                        </div>
+
+                        {{/each}}
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade" style="position: relative; height: 100% " id="v-pills-settings"
+                    role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="container-fluid">
+                        <div class="itog">
+                            На кассе: {{isItog.itog}}
+                        </div>
+                        <div class="row">
+                            <div class="col-1 border text-center">1</div>
+                            <div class="col-1 border">Время</div>
+                            <div class="col-1 border">Дата</div>
+                            <div class="col-1 border">Приход/Уход</div>
+                            <div class="col-1 border">Сумма</div>
+                            <div class="col-1 border">Тип оплаты</div>
+                            <div class="col border">Коммент</div>
+                        </div>
+                        <div class="">
+
+                            {{#each moneyDate}}
+                            <div class="row mb-3 mt-3">
+                                <div class="col-2 align-self-end">
+                                    <h4 class="m-0">{{mouth}} {{year}}</h4>
+                                </div>
+                                <div class="col-2 align-self-end">
+                                    <p class="m-0">Cумма за этот месяц: {{itog}}</p>
+                                </div>
+                                <div class="col-2 align-self-end">
+                                    <p class="m-0">Доход за месяц: {{plus}}</p>
+                                </div>
+                                <div class="col-2 align-self-end">
+                                    <p class="m-0">Расход за месяц: {{minus}}</p>
+                                </div>
+                            </div>
+                            {{#each arr}}
+                            <div class="row">
+                                <div class="col-1 border text-center">{{@index}}</div>
+                                <div class="col-1 border">{{time}}</div>
+                                <div class="col-1 border">{{date}}</div>
+                                <div class="col-1 border">{{arrivalDeparture}}</div>
+                                <div class="col-1 border">{{money}}</div>
+                                <div class="col-1 border">{{type}}</div>
+                                <div class="col border">{{comment}}</div>
+                            </div>
+                            {{/each}}
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="v-registr" role="tabpanel" aria-labelledby="v-registr">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+
+                            <div class="col-4">
+                                <ul class="p-0 m-0">
+                                    {{#each user}}
+                                    {{#if visibility}}
+                                    <li class="border p-3" style="list-style: none;">
+                                        <span class="nameItem">{{name}}</span>
+                                        <span class="statusItem">{{status }}</span>
+                                    </li>
+                                    {{/if}}
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="UserName" class="form-label">Логин</label>
+                                            <input type="text" id="UserName" class="form-control" placeholder="Логин">
+
+                                        </div>
+                                        <div class="col">
+                                            <label for="UserPassword" class="form-label">Пороль</label>
+                                            <input type="text" id="UserPassword" class="form-control"
+                                                placeholder="Пороль">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <label for="UserStatus" class="form-label">Email address</label>
+                                            <select name="" id="UserStatus" class="form-select">
+                                                <option value="Admin">Олег</option>
+                                                <option value="Cashier">Кассир</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-dark w-100" id="createUser">Создать</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title m-auto text-center" id="exampleModalLabel">Создание товара</h5>
+
+            </div>
+            <div class="modal-body">
+                <form action="/createProduct" method="post">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Название</label>
+                        <input name="name" type="text" class="form-control" id="exampleInputName" required>
+                        <div class="form-text">Blaze - Apple Kiwi Splash</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputFirstPrise" class="form-label">Цена закупки</label>
+                        <input name="firstPrise" type="number" class="form-control" id="exampleInputFirstPrise"
+                            required>
+                        <div class="form-text">2000</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputLastPrise" class="form-label">Цена Продажи</label>
+                        <input name="lastPrise" type="number" class="form-control" id="exampleInputLastPrise" required>
+                        <div class="form-text">2500</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputType" class="form-label">Тип</label>
+                        <select name="type" id="exampleInputType" class="form-select" required>
+                            <option value="Жидкость">Жидкость</option>
+                            <option value="Расходник">Расходник</option>
+                            <option value="Девайс">Под/Мод/Мех</option>
+                            <option value="Одноразка">Одноразка</option>
+                            <option value="Кальянные табаки">Кальянные табаки</option>
+                            <option value="Разное">Разное</option>
+                        </select>
+                        <div class="form-text">Под/Мод/Мех</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputQue" class="form-label">Количество</label>
+                        <input name="que" type="number" class="form-control" id="exampleInputQue" required>
+                        <div class="form-text">1</div>
+                    </div>
+                    <button class="btn btn-dark w-100">Создать</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .nav-pills .active {
+        background-color: #343a40 !important;
+        color: #fff;
+    }
+
+    .nav-pills a {
+        color: #000000;
+    }
+
+    .zavoz p {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .zavoz p i {
+        font-size: 20px;
+    }
+
+    .itog {
+        position: static;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        background-color: ;
+
+    }
+
+    .text-midle {
+        display: flex;
+        align-items: center;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+
+<script src="/js/purchase.js"></script>
+<script src="/js/responcePurchase.js"></script>
+<script src="/js/user.js"></script>
+{{/if}}

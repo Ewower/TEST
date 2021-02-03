@@ -1,0 +1,94 @@
+.listens {
+  overflow: scroll;
+  overflow-x: hidden;
+  max-height: 100vh;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  width: 20%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+}
+.card p {
+  margin: 0;
+}
+
+#check {
+  height: 65vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+#check::-webkit-scrollbar {
+  width: 10px;
+}
+#check::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+#check p {
+  margin: 0;
+  display: flex;
+  height: 100%;
+  vertical-align: middle;
+}
+#check strong {
+  display: flex;
+  align-self: center;
+  height: 100%;
+}
+#check * {
+  vertical-align: middle;
+}
+#check .col-3,
+#check .col-2,
+#check .col-1 {
+  padding: 0;
+}
+.SortHide {
+  display: none;
+}
+.hideType {
+  display: none !important;
+}
+.hide {
+  display: none;
+}
+.closeCheck {
+  display: none;
+}
+@media (max-width: 800px) {
+  .listens {
+    padding: 10px;
+  }
+  #basic-addon1 {
+    display: none;
+  }
+  .list {
+    justify-content: space-between;
+  }
+  .list .card {
+    width: 48%;
+    margin-bottom: 10px;
+  }
+  #checks {
+    display: none;
+    overflow: scroll;
+    padding: 10px !important;
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+  .closeCheck {
+    display: flex;
+  }
+}

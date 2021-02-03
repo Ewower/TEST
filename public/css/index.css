@@ -1,0 +1,12 @@
+.fetchNode {
+  display: flex;
+  justify-content: flex-end;
+}
+.hide {
+  display: none !important;
+}
+
+.history .listens {
+  display: flex;
+  justify-content: space-between;
+}
